@@ -1,0 +1,22 @@
+{% extends 'major.html' %}
+
+{% block content %}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<h1>Список записей</h1>
+<hr>
+<h2>{{ surname }} {{ name }} {{ third_name }}:</h2>
+<h3>Телефон: {{ phone }}.</h3>
+<h3>Почта: {{ email }}.</h3>
+<h3>Симптомы: {{ simptom }}.</h3>
+<h3>Время записи: {{ times_h }}:{ times_m }</h3>
+<ul class="list-posts">
+{% for p in posts %}
+<li>
+<p class="title"><a href="{{ url_for('showPost', id_post=p.id)}}">{{p.surname}}</a></p>
+<p class="annonce">{{p.phone}}</p>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
